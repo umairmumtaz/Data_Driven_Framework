@@ -9,7 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 
 public class DemoQa {
@@ -123,5 +126,7 @@ public class DemoQa {
         WebElement PurchaseSummary = WebDriver1.findElement(By.xpath(("//*[@id=\"post-30\"]/div/div[2]/table/tbody/tr")));
         String sPurchaseSummary = PurchaseSummary.getText();
         System.out.println(sPurchaseSummary);
+
+        WebDriver1.close();
     }
 }
