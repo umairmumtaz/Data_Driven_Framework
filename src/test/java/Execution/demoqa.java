@@ -1,21 +1,15 @@
 package Execution;
 
-import com.beust.jcommander.Parameter;
-import javafx.scene.text.Text;
-import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-
-import static java.lang.Thread.*;
 
 
 public class demoqa {
@@ -24,6 +18,7 @@ public class demoqa {
     WebElement WebElement1;
 
     @BeforeSuite
+    //@Parameters("pChromeDriverLocation")
     void Property_Setup() {
         System.setProperty("webdriver.chrome.driver", "C:/Intallations/chromedriver.exe");
     }
@@ -38,41 +33,40 @@ public class demoqa {
     }
 
 //    @BeforeClass
-//    void Url_Setup() {
-//
-//    }
-
 
     @Test(testName ="E2E")
-    void HomePageTC1
-            () throws Exception {
+    void HomePageTC1(){
         WebElement ProductCategory = WebDriver1.findElement(By.xpath(("//*[@id=\"menu-item-33\"]/a")));
-        ProductCategory.click();
+        WebElement Accesssories = WebDriver1.findElement(By.xpath(("//*[@id=\"menu-item-34\"]/a")));
+        Actions HoverClick = new Actions(WebDriver1);
+        HoverClick.moveToElement(ProductCategory).click(Accesssories).build().perform();
+
+
+
+
     }
 
     @Parameters("pExpectedMessage")
     @Test(dependsOnMethods = "HomePageTC1",testName ="E2E")
     void AccessoriesPageTC1(String pExpectedMessage){
 
-        //Accessories Drop Down
-        WebElement Accessories = WebDriver1.findElement(By.xpath(("//*[@id=\"menu-item-34\"]")));
 
         //Magic Mouse Add to Cart Button
-        WebElement MagicMouse_AddToCart_Btn = WebDriver1.findElement(By.xpath(("//*[@id=\"default_products_page_container\"]//input[@type = \"submit\" and @value=\"Add To Cart\" and @name=\"Buy\" and @class=\"wpsc_buy_button\"]")));
+        WebElement MagicMouse_AddToCart_Btn =  WebDriver1.findElement(By.xpath(("//*[@id=\"default_products_page_container\"]//input[@type = \"submit\" and @value=\"Add To Cart\" and @name=\"Buy\" and @class=\"wpsc_buy_button\"]")));
         MagicMouse_AddToCart_Btn.click();
 
-        //wait until item is added into the cart.
-        WebDriverWait wait=new WebDriverWait(WebDriver1, 5);
+//        //wait until item is added into the cart.
+        WebDriverWait wait=new WebDriverWait(WebDriver1, 5000);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
-
+//
         //Verify Alert Message
-        WebElement AlertMessage = WebDriver1.findElement(By.xpath(("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
-        //String ExpectedMessage = "Item has been added to your cart!";
-        String Message1= AlertMessage.getText();
-        String Message2= AlertMessage.getTagName();
-        boolean x = AlertMessage.isSelected();
-        Boolean y = AlertMessage.isEnabled();
-        Assert.assertEquals(false, AlertMessage.isDisplayed());
+//        WebElement AlertMessage = WebDriver1.findElement(By.xpath(("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
+//        String Message1= AlertMessage.getText();
+//        String Message2= AlertMessage.getTagName();
+//        boolean x = AlertMessage.isSelected();
+//        Boolean y = AlertMessage.isEnabled();
+//        Assert.assertEquals(false, AlertMessage.isDisplayed());
+
         WebElement Checkout = WebDriver1.findElement(By.xpath(("//*[@id=\"header_cart\"]/a")));
         Checkout.click();
     }
@@ -95,7 +89,9 @@ public class demoqa {
     //Billing details form
     void checkoutPageTC2(String pInputEmail, String pInputFirstName,String pInputLastName,  String pInputAddress , String pInputCity ,String pInputUndefined,String pInputCountry, String pInputPostalCode,String pInputPhone ){
 
-            //sleep(2000);
+        //waiting for the first element to be avaialble
+//        WebDriverWait wait = new WebDriverWait(WebDriver1, 7000);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"wpsc_checkout_form_9\"]")));
 
         WebElement InputEmail = WebDriver1.findElement(By.xpath(("//*[@id=\"wpsc_checkout_form_9\"]")));
         InputEmail.sendKeys(pInputEmail);
@@ -108,7 +104,6 @@ public class demoqa {
         WebElement InputCity = WebDriver1.findElement(By.xpath(("//*[@id=\"wpsc_checkout_form_5\"]")));
         InputCity.sendKeys(pInputCity);
         WebElement InputUndefined = WebDriver1.findElement(By.xpath(("//*[@id=\"wpsc_checkout_form_6\"]")));
-       // pInputUndefined.click();
         InputUndefined.sendKeys(pInputUndefined);
 
         //Country Drop down Menu
@@ -121,6 +116,7 @@ public class demoqa {
         InputPostalCode.sendKeys(pInputPostalCode);
         WebElement InputPhone = WebDriver1.findElement(By.xpath(("//*[@id=\"wpsc_checkout_form_18\"]")));
         InputPhone.sendKeys(pInputPhone);
+
         // Perimeters not needed
         WebElement SameAsBillingAddressCheckBox = WebDriver1.findElement(By.xpath(("//*[@id=\"shippingSameBilling\"]")));
         SameAsBillingAddressCheckBox.click();
