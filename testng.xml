@@ -1,6 +1,6 @@
 <suite name="Regression">
+    <parameter name="pChromeDriverPath"     value="C:\Intallations\chromedriver.exe"/>
     <test name="E2E">
-        <parameter name="pChromeDriverLocation"  value="C:/Intallations/chromedriver.exe"/>
         <parameter name="pURL"                   value="http://store.demoqa.com"/>
         <parameter name="pExpectedMessage"       value="Item has been added to your cart!"/>
         <parameter name="pExpectedQuantity"      value="1"/>
@@ -16,7 +16,7 @@
         <parameter name="pThankYouText"          value="Thank you, your purchase is pending. You will be sent an email once the order clears."/>
         <parameter name="pInputPhone"            value="6471231234"/>
         <classes>
-            <class name="Execution.demoqa" />
+            <class name="Execution.DemoQa" />
         </classes>
     </test>
 </suite>

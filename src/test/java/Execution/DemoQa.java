@@ -12,15 +12,15 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class demoqa {
+public class DemoQa {
 
     WebDriver WebDriver1;
     WebElement WebElement1;
 
     @BeforeSuite
-    //@Parameters("pChromeDriverLocation")
-    void Property_Setup() {
-        System.setProperty("webdriver.chrome.driver", "C:/Intallations/chromedriver.exe");
+    @Parameters("pChromeDriverPath")
+    void Property_Setup(String pChromeDriverPath) {
+        System.setProperty("webdriver.chrome.driver",pChromeDriverPath);
     }
 
     @BeforeTest
@@ -52,7 +52,7 @@ public class demoqa {
 
         //wait until item is added into the cart.
         WebDriverWait wait=new WebDriverWait(WebDriver1, 5000);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
+        //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
 
         WebElement Checkout = WebDriver1.findElement(By.xpath(("//*[@id=\"header_cart\"]/a")));
