@@ -1,0 +1,21 @@
+<suite name="Regression">
+    <test name="E2E">
+        <parameter name="pURL"                   value="http://store.demoqa.com"/>
+        <parameter name="pExpectedMessage"       value="Item has been added to your cart!"/>
+        <parameter name="pExpectedQuantity"      value="1"/>
+        <parameter name="pInputEmail"            value="Test1@mailnaitor.com"/>
+        <parameter name="pInputFirstName"        value="Mike"/>
+        <parameter name="pInputLastName"         value="Jordon"/>
+        <parameter name="pInputAddress"          value="111 North york"/>
+        <parameter name="pInputCity"             value="Toronto"/>
+        <parameter name="pInputUndefined"        value="Ontario"/>
+        <parameter name="pInputCountry"          value="Canada"/>
+        <parameter name="pInputPostalCode"       value="A1F3R4"/>
+        <parameter name="pInputPhone"            value="6471231234"/>
+        <parameter name="pSuccessMessage"        value="Good job??"/>
+        <parameter name="pThankYouText"          value="Thank you, your purchase is pending. You will be sent an email once the order clears."/>
+        <classes>
+            <class name="Execution.demoqa" />
+        </classes>
+    </test>
+</suite>
