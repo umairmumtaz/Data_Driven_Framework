@@ -53,6 +53,7 @@ public class demoqa {
         //wait until item is added into the cart.
         WebDriverWait wait=new WebDriverWait(WebDriver1, 5000);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"default_products_page_container\"]/div[3]/div[2]/form/div[2]/div[1]/div[2]/p[text()]")));
 
         WebElement Checkout = WebDriver1.findElement(By.xpath(("//*[@id=\"header_cart\"]/a")));
         Checkout.click();
