@@ -8,6 +8,7 @@
     <artifactId>Automation_Challenge</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
+        <parameter name="pChromeDriverPath"     value="C:\Intallations\chromedriver.exe"/>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
@@ -33,7 +34,6 @@
 
     <build>
         <plugins>
-            [...]
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -44,7 +44,6 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
-            [...]
         </plugins>
     </build>
 </project>
