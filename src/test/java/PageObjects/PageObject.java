@@ -1,13 +1,15 @@
 package PageObjects;
 
-import Configuration.EnvSetUp;
+import Configuration.ConfigFileReader;
+import DriverManager.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 //Ideally every web page should have its own PageObject CLass.
-public class PageObject extends EnvSetUp {
+public class PageObject extends WebDriverManager  {
+
+    WebDriver webDriver1 = WebDriverManager.getInstance().getDriver();
 
         By ProductCategory =         By.xpath("//*[@id=\"menu-item-33\"]/a");
         By Accessories =             By.xpath("//*[@id=\"menu-item-34\"]/a");
