@@ -1,13 +1,14 @@
 package PageObjects;
-
-import Configuration.EnvSetUp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+
 
 //Ideally every web page should have its own PageObject CLass.
-public class PageObject extends EnvSetUp {
+public class PageObject {
+
+   WebDriver webDriver;
 
         By ProductCategory =         By.xpath("//*[@id=\"menu-item-33\"]/a");
         By Accessories =             By.xpath("//*[@id=\"menu-item-34\"]/a");
@@ -32,88 +33,88 @@ public class PageObject extends EnvSetUp {
 
         //constructor
         public PageObject(WebDriver driver){
-            this.webDriver1=driver;
+            this.webDriver=driver;
         }
 
         public WebElement getProductCategory(){
-           return(webDriver1.findElement(ProductCategory));
+           return(webDriver.findElement(ProductCategory));
         }
 
         public WebElement getAccessories(){
-            return(webDriver1.findElement(Accessories));
+            return(webDriver.findElement(Accessories));
         }
 
         public WebElement getMagicmouseAddToCartBtn(){
-            return(webDriver1.findElement(magicMouseAddToCartBtn));
+            return(webDriver.findElement(magicMouseAddToCartBtn));
         }
 
         public WebElement getAddToCartMessage(){
-            return (webDriver1.findElement(addToCartMessage));
+            return (webDriver.findElement(addToCartMessage));
         }
 
         public WebElement getCheckOut(){
-            return (webDriver1.findElement(checkOut));
+            return (webDriver.findElement(checkOut));
         }
 
         public WebElement getInputQuantity(){
-            return (webDriver1.findElement(inputQuantity));
+            return (webDriver.findElement(inputQuantity));
         }
 
         public WebElement getContinueBtn(){
-            return (webDriver1.findElement(continueBtn));
+            return (webDriver.findElement(continueBtn));
         }
 
         public WebElement getInputEmail(){
-            return (webDriver1.findElement(inputEmail));
+            return (webDriver.findElement(inputEmail));
         }
 
         public WebElement getInputFirstName(){
-            return (webDriver1.findElement(inputFirstName ));
+            return (webDriver.findElement(inputFirstName ));
         }
 
         public WebElement getInputLastName(){
-            return (webDriver1.findElement(inputLastName));
+            return (webDriver.findElement(inputLastName));
         }
 
         public WebElement getInputAddress (){
-            return (webDriver1.findElement(inputAddress));
+            return (webDriver.findElement(inputAddress));
         }
 
         public WebElement getInputCity (){
-             return (webDriver1.findElement(inputCity));
+             return (webDriver.findElement(inputCity));
         }
 
         public WebElement getInputUndefined (){
-            return (webDriver1.findElement(inputUndefined));
+            return (webDriver.findElement(inputUndefined));
         }
 
         public WebElement getInputCountryDropDown(){
 
-            return (webDriver1.findElement(inputCountryDropDown));
+            return (webDriver.findElement(inputCountryDropDown));
         }
 
         public WebElement getInputPostalCode(){
-            return (webDriver1.findElement(inputPostalCode));
+            return (webDriver.findElement(inputPostalCode));
         }
 
         public WebElement getInputPhone(){
-            return (webDriver1.findElement(inputPhone));
+            return (webDriver.findElement(inputPhone));
         }
 
         public WebElement getSameAsBillingAddressCheckBox() {
-            return (webDriver1.findElement(sameAsBillingAddressCheckBox));
+            return (webDriver.findElement(sameAsBillingAddressCheckBox));
         }
 
         public WebElement getPurchaseBtn(){
-            return (webDriver1.findElement(purchaseBtn));
+            return (webDriver.findElement(purchaseBtn));
         }
 
         public WebElement getThankYouText(){
-            return (webDriver1.findElement(thankYouText));
+            return (webDriver.findElement(thankYouText));
         }
 
         public WebElement getPurchaseSummary(){
-            return (webDriver1.findElement(purchaseSummary));
+            return (webDriver.findElement(purchaseSummary));
         }
 
 }

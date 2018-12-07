@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Automation_Challenge" />
         <module name="Automation_Challenge1" />
+        <module name="UM_Framework" />
       </profile>
     </annotationProcessing>
   </component>

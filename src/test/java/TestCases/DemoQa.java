@@ -1,9 +1,7 @@
 package TestCases;
-
-import Configuration.EnvSetUp;
+import Configuration.ConfigFileReader;
 import PageObjects.PageObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -11,17 +9,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import DriverManager.BrowserDriverManager;
+import org.testng.annotations.BeforeSuite;
 
 //Ideally every Web Page should have its own TC Class
-public class DemoQa extends EnvSetUp{
+public class DemoQa {
 
-    //Initializing Object of PageObjecyt class and passing the static object(webDriver1) from Env_SetUp Class.
-    PageObject pageObject = new PageObject(webDriver1);// I
+    WebDriver webDriver1;
+    PageObject pageObject;
+    String url = ConfigFileReader.getPropertyValue("website.Url"); //getting url from configuration file through ConfigFileReader Class.
+
+    @BeforeSuite
+    void browserSetup() {
+        webDriver1 = BrowserDriverManager.getInstance().getWebDriver(); //need to have same driver same instance
+        pageObject = new PageObject(webDriver1);// I
+        webDriver1.manage().deleteAllCookies(); //delete all cookies
+     }
 
     @Test(testName ="E2E")
-    @Parameters("pURL")
-    void loadPageTC1(String pURL){
-        webDriver1.get(pURL);
+    void loadPageTC1(){
+        webDriver1.get(url); //getting url from above string variable
     }
 
     @Test(dependsOnMethods = "loadPageTC1",testName ="E2E")
