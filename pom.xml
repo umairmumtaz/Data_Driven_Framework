@@ -8,7 +8,7 @@
     <artifactId>Automation_Challenge</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <parameter name="pChromeDriverPath"     value="C:\Intallations\chromedriver.exe"/>
+
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
